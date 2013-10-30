@@ -11,5 +11,11 @@ return [
         'invokables' => array(
             'EnliteFilesVoidAccess'   => 'EnliteFiles\Access\VoidAccess',
         )
-    )
+    ),
+
+    'controllers' => array(
+        'invokables' => array(
+            'EnliteFilesFile' => 'EnliteFiles\Controller\FileController',
+        )
+    ),
 ];

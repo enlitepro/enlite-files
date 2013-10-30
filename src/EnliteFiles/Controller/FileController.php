@@ -12,6 +12,26 @@
 namespace EnliteFiles\Controller;
 
 
-class FileController {
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
+
+class FileController extends AbstractActionController
+{
+
+    public function ajaxUploadAction()
+    {
+
+    }
+
+    /**
+     * @return JsonModel
+     */
+    public function ajaxForbidden()
+    {
+        $model = new JsonModel();
+        $model->setVariable('status', 'error');
+        $model->setVariable('message', 'Forbidden error');
+        return $model;
+    }
 
 } 

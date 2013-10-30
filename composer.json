@@ -1,0 +1,32 @@
+{
+    "name": "enlitepro/enlite-files",
+    "description": "The extension for managment (upload, remove, download, view) files in Zend Framework 2",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Uladzimir Struts",
+            "email": "evgeny@shpilevsky.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": ">=2.2.0"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "doctrine/doctrine-orm-module": "*",
+        "doctrine/doctrine-module": "*"
+    },
+    "suggest": {
+        "doctrine/doctrine-orm-module": "For add supports doctrine module in FileInterface and RegistryInterface",
+        "doctrine/doctrine-module": "For add supports doctrine module in FileInterface and RegistryInterface"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "EnliteFiles": "src/"
+        }
+    }
+}

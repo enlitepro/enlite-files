@@ -111,6 +111,11 @@ class FileManager implements ServiceLocatorAwareInterface
      */
     public function getRegistry()
     {
+        if (is_null($this->registry)) {
+            $this->registry = $this->getServiceLocator()->get(
+                $this->getConfig()->getRegistry()
+            );
+        }
         return $this->registry;
     }
 
@@ -127,6 +132,11 @@ class FileManager implements ServiceLocatorAwareInterface
      */
     public function getStorage()
     {
+        if (is_null($this->storage)) {
+            $this->storage = $this->getServiceLocator()->get(
+                $this->getConfig()->getStorage()
+            );
+        }
         return $this->storage;
     }
 
@@ -143,6 +153,11 @@ class FileManager implements ServiceLocatorAwareInterface
      */
     public function getAccessUpload()
     {
+        if (is_null($this->accessUpload)) {
+            $this->accessUpload = $this->getServiceLocator()->get(
+                $this->getConfig()->getAccessUpload()
+            );
+        }
         return $this->accessUpload;
     }
 
@@ -159,6 +174,11 @@ class FileManager implements ServiceLocatorAwareInterface
      */
     public function getAccessDelete()
     {
+        if (is_null($this->accessDelete)) {
+            $this->accessDelete = $this->getServiceLocator()->get(
+                $this->getConfig()->getAccessDelete()
+            );
+        }
         return $this->accessDelete;
     }
 
@@ -175,6 +195,11 @@ class FileManager implements ServiceLocatorAwareInterface
      */
     public function getAccessDownload()
     {
+        if (is_null($this->accessDownload)) {
+            $this->accessDownload = $this->getServiceLocator()->get(
+                $this->getConfig()->getAccessDownload()
+            );
+        }
         return $this->accessDownload;
     }
 
@@ -270,6 +295,11 @@ class FileManager implements ServiceLocatorAwareInterface
      */
     public function getProcessorManager()
     {
+        if (is_null($this->processorManager)) {
+            $this->processorManager = $this->getServiceLocator()->get(
+                $this->getConfig()->getProcessorManager()
+            );
+        }
         return $this->processorManager;
     }
 

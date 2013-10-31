@@ -36,12 +36,12 @@ trait FileManagerTrait {
     {
         if (null === $this->fileManager) {
             if ($this instanceof ServiceLocatorAwareInterface || method_exists($this, 'getServiceLocator')) {
-                $this->fileManager = $this->getServiceLocator()->get('FileManager');
+                $this->fileManager = $this->getServiceLocator()->get('EnliteFilesManager');
             } else {
                 if (property_exists($this, 'serviceLocator')
                     && $this->serviceLocator instanceof ServiceLocatorInterface
                 ) {
-                    $this->fileManager = $this->serviceLocator->get('FileManager');
+                    $this->fileManager = $this->serviceLocator->get('EnliteFilesManager');
                 } else {
                     throw new RuntimeException('Service locator not found');
                 }

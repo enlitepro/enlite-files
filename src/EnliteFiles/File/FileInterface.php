@@ -49,4 +49,24 @@ interface FileInterface {
      * @return bool
      */
     public function isImage();
+
+    /**
+     * @return array
+     */
+    public function toArray();
+
+    /**
+     * For set ETag in header, for example
+     *
+     * @return string
+     */
+    public function getHash();
+
+    /**
+     * Get name file
+     *
+     * @return string
+     */
+    public function getName();
+
 }

@@ -17,10 +17,13 @@ use EnliteFiles\Exception\UnexpectedValueException;
 use EnliteFiles\File\FileInterface;
 use EnliteFiles\FileManagerTrait;
 use EnliteFiles\Process\ProcessorManagerOptions;
+use Zend\ServiceManager\AbstractPluginManager;
+use Zend\ServiceManager\Exception;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
 
-class ProcessorManager implements ProcessorManagerInterface, ServiceLocatorAwareInterface
+class ProcessorManager extends AbstractPluginManager
+    implements ProcessorManagerInterface, ServiceLocatorAwareInterface
 {
 
     use ServiceLocatorAwareTrait, FileManagerTrait;
@@ -69,12 +72,7 @@ class ProcessorManager implements ProcessorManagerInterface, ServiceLocatorAware
      */
     public function getProcessor($name, $options)
     {
-        $processor = $this->getServiceLocator()->get($name);
-        if (!$processor instanceof ProcessorInterface) {
-            throw new UnexpectedValueException('The processor with name "' . $name . '" must be implements EnliteFiles\Process\ProcessorInterface');
-        }
-
-        $processor->setOptions($options);
+        $processor = $this->get($name);
         return $processor;
     }
 
@@ -145,4 +143,20 @@ class ProcessorManager implements ProcessorManagerInterface, ServiceLocatorAware
         return $this->config;
     }
 
+    /**
+     * Validate the plugin
+     *
+     * Checks that the filter loaded is either a valid callback or an instance
+     * of FilterInterface.
+     *
+     * @param  mixed $plugin
+     * @return void
+     * @throws Exception\RuntimeException if invalid
+     */
+    public function validatePlugin($plugin)
+    {
+        if (!$plugin instanceof ProcessorInterface) {
+            throw new Exception\RuntimeException('Processor must instance Processor\ProcessorInterface');
+        }
+    }
 }

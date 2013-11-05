@@ -6,13 +6,23 @@ return [
             'EnliteFilesManagerOptions' => 'EnliteFiles\FileManagerOptionsFactory',
             'EnliteFilesProcessorManager' => 'EnliteFiles\Process\ProcessorManagerFactory',
             'EnliteFilesProcessorManagerOptions' => 'EnliteFiles\Process\ProcessorManagerOptionsFactory',
-            'EnliteFilesDefaultUploadForm' => 'EnliteFiles\Form\DefaultUploadFormFactory',
             'EnliteFilesCommonOptions' => 'EnliteFiles\CommonOptionsFactory',
             'EnliteFilesResponseBuilderManager' => 'EnliteFiles\ResponseBuilder\ResponseBuilderManagerFactory',
+
+            // upload default forms
+            'EnliteFilesAjaxUploadForm' => 'EnliteFiles\Form\AjaxUploadFormFactory',
+
+            // default storage
+            'EnliteFilesFileStorage' => 'EnliteFiles\Storage\FileStorageFactory',
+            'EnliteFilesFileStorageOptions' => 'EnliteFiles\Storage\FileStorageOptionsFactory',
         ),
 
         'invokables' => array(
+            // default accesses
             'EnliteFilesVoidAccess'   => 'EnliteFiles\Access\VoidAccess',
+
+            // default strategies for hydrators
+            'EnliteFilesHydratorStrategyFactoryFile' => 'EnliteFiles\Hydrator\Strategy\FactoryFile',
         )
     ),
 
@@ -21,4 +31,10 @@ return [
             'EnliteFilesFile' => 'EnliteFiles\Controller\FileController',
         )
     ),
+
+    'filter_manager' => [
+        'invokables' => [
+            'EnliteFilesMoveStorage' => 'EnliteFiles\Filter\File\MoveStorage'
+        ]
+    ],
 ];

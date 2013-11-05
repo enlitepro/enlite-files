@@ -4,6 +4,7 @@ namespace EnliteFiles;
 
 return [
     'enlite_files' => [
+        /* Supporting response builders, use AbstractPluginManager */
         'response_builders' => [
             'factories' => [
                 'view' => function() {
@@ -27,6 +28,7 @@ return [
                         return $builder;
                     },
             ]
-        ]
-    ]
+        ],
+        'ajax_upload_form' => 'EnliteFilesAjaxUploadForm', // the default form using for upload files by AJAX
+    ],
 ];

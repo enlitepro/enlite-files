@@ -33,14 +33,6 @@ interface ProcessorInterface {
     public function remove(FileInterface $file);
 
     /**
-     * Set options from a config handler
-     *
-     * @param array $options
-     * @return void
-     */
-    public function setOptions(array $options);
-
-    /**
      * After a process this processor do break a process
      *
      * @return bool

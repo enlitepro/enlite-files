@@ -26,8 +26,16 @@ class ProcessorManagerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $manager = new ProcessorManager();
-        $manager->setConfig($serviceLocator->get('EnliteFilesProcessorManagerOptions'));
+        /** @var ProcessorManagerOptions $config */
+        $config = $serviceLocator->get('EnliteFilesProcessorManagerOptions');
+//        if (isset($config['enlite_files']) && isset($config['enlite_files']['processors'])) {
+//            $config = $config['enlite_files']['processor_manager'];
+//        } else {
+//            $config = null;
+//        }
+
+        $manager = new ProcessorManager($config->getHandlers());
+        $manager->setConfig($config);
         return $manager;
     }
 }
